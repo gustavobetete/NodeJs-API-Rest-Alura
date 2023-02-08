@@ -12,8 +12,19 @@
 
 ### Rotas ✅
 
+>Livros:
+
 - **POST:** ("/livros");
 - **GET:** ("/livros");
+- **GET by editora:** ("/livros/busca");
 - **GET By ID:** ("/livros/:id");
 - **PUT:** ("/livros/:id");
 - **DELETE:** ("/livros/:id");
+
+>Autores:
+
+- **POST:** ("/autores");
+- **GET:** ("/autores");
+- **GET By ID:** ("/autores/:id");
+- **PUT:** ("/autores/:id");
+- **DELETE:** ("/autores/:id");
