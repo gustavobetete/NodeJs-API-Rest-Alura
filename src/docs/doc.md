@@ -165,6 +165,36 @@ paths:
         - petstore_auth:
             - write:books
             - read:books   
+  /livros/busca:
+    get:
+      tags:
+        - Livros
+      summary: Tras o livro buscando pelo nome da editora
+      description: Lista o livro buscando pelo nome da editora
+      operationId: getBooksByEditors
+      parameters:
+        - name: editora
+          in: query
+          description: nome da editora
+          required: false
+          schema:
+            type: string
+            example: 'Nome da editora'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LivrosGetByEditors'          
+        '400':
+          description: Invalid status value
+      security:
+        - petstore_auth:
+            - write:books
+            - read:books    
   /autores:
     post:
       tags:
@@ -473,7 +503,24 @@ components:
       properties: 
         message:
           type: string
-          example: "Autor deletado com sucesso"         
+          example: "Autor deletado com sucesso"   
+    LivrosGetByEditors: 
+      properties:
+        id: 
+          type: string
+          example: '63e2e33d0063e79ce88d0a60'
+        titulo:
+          type: string
+          example: 'Titulo do livro'
+        autor:
+          type: string
+          example: '63e307e0235268da377c3c4f'
+        editora:
+          type: string
+          example: 'Nome da editora'  
+        numeroPaginas:
+          type: number
+          example: 198 
   securitySchemes:
     petstore_auth:
       type: oauth2
